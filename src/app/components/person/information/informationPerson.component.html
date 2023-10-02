@@ -1,0 +1,52 @@
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">{{ !personInfomation.id ? 'Nuevo persona' : 'Actualizar persona' }}
+		</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+	</div>
+	<div class="modal-body">
+		<form class="row" [formGroup]="formGroupPerson">
+			<div class="col-12 ">
+				<div class="form-group">
+					<label for="Cedula">Cedula</label>
+					<input type="text" class="form-control" formControlName="Cedula" id="Cedula"
+						placeholder="Ingrese Nombres">
+					<div *ngIf="formGroupPerson.controls['Cedula'].errors && !formGroupPerson.controls['Cedula'].pristine"
+						class="text text-danger">
+						Cedula obligatorio
+					</div>
+					<div *ngIf="formGroupPerson.controls['Cedula'].errors?.['minlength']"
+						class="text text-danger">
+						Cantidad minina 7 digitos
+					</div>
+				</div>
+			</div>
+			<div class="col-12">
+				<div class="form-group">
+					<label for="Nombre">Nombre</label>
+					<input type="text" class="form-control" formControlName="Nombre" id="Nombre"
+						placeholder="Ingrese Apellidos">
+					<div *ngIf="formGroupPerson.controls['Nombre'].errors && !formGroupPerson.controls['Nombre'].pristine"
+						class="text text-danger">
+						Nombre obligatorio
+					</div>
+				</div>
+			</div>
+			<div class="col-12">
+				<div class="form-group">
+					<label for="Apellido">Apellido</label>
+					<input type="text" class="form-control" formControlName="Apellido" id="Apellido"
+						placeholder="Ingrese documento">
+					<div *ngIf="formGroupPerson.controls['Apellido'].errors?.['required'] && !formGroupPerson.controls['Apellido'].pristine"
+						class="text text-danger">
+						Apellido obligatorio
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" (click)="save()" *ngIf="!personInfomation.id">Guardar</button>
+		<button class="btn btn-primary" (click)="save()" *ngIf="personInfomation.id">Actualizar</button>
+	</div>
+</ng-template>

@@ -1,0 +1,35 @@
+<div class="row m-sm-0 w-100  overflow-x-hidden hw-100">
+    <div class="column-image background-grey col-12 col-sm-12 col-md-7 col-lg-8 col-xl-8 col-xxl-8">
+        <div class="w-100 h-100 flex">
+            <img style="width: 70%;" class="image-login w-40 m-auto" src="assets/img/image.png">
+        </div>
+    </div>
+    <div class="m-auto p-5 col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 col-xxl-4">
+        <form (ngSubmit)="btnLogin()" [formGroup]="formGroup">
+            <div class="">
+                <div class="text-center p-field mb-5">
+                    <h2>Inicia sesión</h2>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user" style="color: #055bf0;"></i></span>
+                    <input type="text" class="form-control" id="txtEmail" placeholder="Correo electrónico" name="txtEmail"
+                        aria-describedby="inputGroupPrepend" formControlName="txtEmail" required />
+                </div>
+                <div *ngIf="formGroup.controls['txtEmail'].errors && !formGroup.controls['txtEmail'].pristine"
+                        class="text text-danger">
+                        Correo electrónico requerido
+                    </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock" style="color: #055bf0;"></i></span>
+                    <input type="password" class="form-control"  name="txtPassword" autocomplete="off" id="txtPassword" placeholder="Contraseña"
+                        aria-describedby="inputGroupPrepend" formControlName="txtPassword" required />
+                  </div>
+                <div class="p-field mb-1 text-center">
+                    <button class="btn btn-primary" [disabled]="!formGroup.valid" type="submit">Ingresar</button>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+</div>
+

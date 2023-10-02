@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <!-- <app-breadcrumb [breadcrumbs]="inbreadcrumbs"></app-breadcrumb> -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5>Listado de personas</h5>
+                        <button (click)="open()" class="btn btn-primary" type="button">
+                            <i class="fa-solid fa-plus me-1"></i> Crear</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="card-body noscroll">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Cedula</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Acción</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let persona of lsPerson">
+                                <td>{{ persona.cedula }}</td>
+                                <td>{{ persona.nombre }}</td>
+                                <td>{{ persona.apellido }}</td>
+                                <td>
+                                    <button class="btn btn-icon btn-warning me-2" type="button" placement="top"
+                                        (click)="open(persona.id)">
+                                    <i class="fa-solid fa-user-pen fa-lg"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon me-2 btn-danger"
+                                                (click)="deletePerson(persona.id)">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                </td>
+                                    
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <detail-user-component #childDetailUser></detail-user-component>-->
+    <information-person-component #childModalPerson></information-person-component> 
+</div>
